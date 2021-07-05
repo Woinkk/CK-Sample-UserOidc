@@ -7,7 +7,6 @@ using CK.DB.User.UserOidc;
 using CK.SqlServer;
 using CK.DB.Actor.ActorEMail;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Threading.Tasks;
 
 namespace CK.Sample.User.UserOidc.App.Auth

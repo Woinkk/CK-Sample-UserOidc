@@ -1,0 +1,40 @@
+.main-container {
+  width: 85%;
+  height: 80%;
+  display: inline-flex;
+  flex-direction: row;
+}
+.function-container {
+  width: 70%;
+  padding-right: 5%;
+}
+.function-item {
+  outline: auto;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  flex-grow: 1;
+  padding: 5px;
+}
+h4 {
+  margin: 0px;
+}
+.state-container {
+  width: 35%;
+}
+.state-container>div {
+  outline: auto;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+}
+.state-item {
+  text-align: center;
+  flex-grow: 1;
+}
+.state-item>h2 {
+  margin-block-start: 0;
+}
+.state-item>pre {
+  overflow: auto;
+}

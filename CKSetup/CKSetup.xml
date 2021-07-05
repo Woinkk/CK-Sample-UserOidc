@@ -1,0 +1,18 @@
+<Setup Engine="CK.Setup.StObjEngine, CK.StObj.Engine">
+  <Aspect Type="CK.Setup.SetupableAspectConfiguration, CK.Setupable.Model" Version="1" />
+  <Aspect Type="CK.Setup.SqlSetupAspectConfiguration, CK.SqlServer.Setup.Model">
+    <DefaultDatabaseConnectionString>Server=.;Database=SampleUserOidc;Integrated Security=True</DefaultDatabaseConnectionString>
+  </Aspect>
+
+  <BinPaths>
+    <BinPath Path="../CK.Sample.User.UserOidc.App/bin/Debug/netcoreapp3.1">
+      <ProjectPath>../CK.Sample.User.UserOidc.WebHost</ProjectPath>
+    </BinPath>
+  </BinPaths>
+
+  <WorkingDirectory>WorkingDir</WorkingDirectory>
+  <LogLevel>Debug</LogLevel>
+  <CKSetupName></CKSetupName>
+
+  <PreferredTargetRuntimes>NetCoreApp31</PreferredTargetRuntimes>
+</Setup>

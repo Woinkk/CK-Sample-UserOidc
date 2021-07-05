@@ -16,8 +16,6 @@ namespace CK.Sample.User.UserOidc.WebHost
     {
         public static void Main(string[] args)
         {
-            // Using the default "black box"...
-            // (See the Front.Web Program.cs for a detailed and explicit configuration.)
             Host.CreateDefaultBuilder(args)
                  .UseMonitoring()
                  .ConfigureWebHostDefaults(webBuilder =>

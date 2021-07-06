@@ -6,6 +6,8 @@ namespace CK.Sample.User.UserOidc.WebHost
 {
     public class Program
     {
+        // Ceci utilise les "black-box" CreateDefaultBuilder et ConfigureWebHostDefaults.
+        // CK-Sample-Monitoring ne fait pas ça...
         public static void Main(string[] args)
         {
             Host.CreateDefaultBuilder(args)

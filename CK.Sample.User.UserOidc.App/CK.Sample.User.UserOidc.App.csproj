@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <IsPackable>false</IsPackable>
+    <!-- On travaille TOUJOURS en "nullable reference type" (NRT) maintenant! -->
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,11 +14,14 @@
     <PackageReference Include="CK.DB.User.UserOidc" Version="11.1.1--0002-develop" />
     <PackageReference Include="CK.DB.Actor.ActorEMail" Version="11.1.0" />
     <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.16" />
+    <!--
+
+    C'est quoi ces packages inutiles ????
+    
     <PackageReference Include="Microsoft.Graph" Version="3.33.0" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.12.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />-->
   </ItemGroup>
 
 </Project>

@@ -37,37 +37,37 @@ namespace CK.Sample.User.UserOidc.App.Auth
             _groupTable = groupTable;
         }
 
-        public async Task<UserLoginResult> CreateAccountAndLoginAsync(IActivityMonitor monitor, IWebFrontAuthAutoCreateAccountContext context)
+        public async Task<UserLoginResult> CreateAccountAndLoginAsync( IActivityMonitor monitor, IWebFrontAuthAutoCreateAccountContext context )
         {
             UserLoginResult result;
 
             ISqlCallContext ctx = context.HttpContext.RequestServices.GetRequiredService<ISqlCallContext>();
 
-            if (context.InitialScheme == "Oidc.Signature")
+            if( context.InitialScheme == "Oidc.Signature" )
             {
                 IAzureAdUserOidcInfo userOidcInfo = (IAzureAdUserOidcInfo)context.Payload;
 
                 // User does not exist :(
 
-                if (userOidcInfo.Username.EndsWith("signature-code.com"))
+                if( userOidcInfo.Username.EndsWith( "signature-code.com" ) )
                 {
                     // Create user
-                    int userId = await _userTable.CreateUserAsync(ctx, 1, userOidcInfo.Username);
+                    int userId = await _userTable.CreateUserAsync( ctx, 1, userOidcInfo.Username );
 
                     // Add the user to signature code group ( by design 4 is Signature Code group id )
-                    await _groupTable.AddUserAsync(ctx, 1, 4, userId);
+                    await _groupTable.AddUserAsync( ctx, 1, 4, userId );
 
                     // Associate OpenID Sub
-                    await _userOidcTable.CreateOrUpdateOidcUserAsync(ctx, 1, userId, userOidcInfo, UCLMode.CreateOnly);
+                    await _userOidcTable.CreateOrUpdateOidcUserAsync( ctx, 1, userId, userOidcInfo, UCLMode.CreateOnly );
 
                     // Associate e-mail from Username
-                    await _actorEMailTable.AddEMailAsync(ctx, 1, userId,
+                    await _actorEMailTable.AddEMailAsync( ctx, 1, userId,
                         userOidcInfo.Email ?? userOidcInfo.Username,
-                        true, true);
+                        true, true );
 
                     // Read user
-                    var userAuthInfo = await _authenticationDatabaseService.ReadUserAuthInfoAsync(ctx, 1, userId);
-                    var userInfo = _authenticationTypeSystem.UserInfo.FromUserAuthInfo(userAuthInfo);
+                    var userAuthInfo = await _authenticationDatabaseService.ReadUserAuthInfoAsync( ctx, 1, userId );
+                    var userInfo = _authenticationTypeSystem.UserInfo.FromUserAuthInfo( userAuthInfo );
 
                     // Successful login
                     return new UserLoginResult(

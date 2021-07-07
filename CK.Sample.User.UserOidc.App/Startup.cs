@@ -87,8 +87,6 @@ namespace CK.Sample.User.UserOidc.App
             // The entry point assembly contains the generated code.
             services.AddCKDatabase( _startupMonitor, System.Reflection.Assembly.GetEntryAssembly() );
 
-            services.AddOptions<WebFrontAuthOptions>();
-
             // Pourquoi a-t-on besoin de MVC dans ce sample ?
             services.AddControllers();
 
@@ -137,7 +135,8 @@ namespace CK.Sample.User.UserOidc.App
                      // Pourquoi at-t-on besoin de SaveTokens = true ?
                      o.SaveTokens = true;
 
-                     // The OnTicketReceived is the primary 
+                     // The OnTicketReceived is the main adapter between the remote provider and the
+                     // backend: the information from the Ticket is transfered onto the payload that is the IUserOidc payload.
                      o.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IAzureAdUserOidcInfo>( payload =>
                      {
                          payload.SchemeSuffix = "Signature";
@@ -147,26 +146,10 @@ namespace CK.Sample.User.UserOidc.App
                          payload.Email = c.Principal.FindFirst( "verified_primary_email" )?.Value;
                      } );
                  } )
-                /// Ici, toutes les options (WebFrontAuthOptions) devraient pouvoir être définies dans le fichier de configuration (appsettings).
-                /// Pour ce faire, il faut faire un truc comme la ligne ci-après.
-                /// Le problème est qu'il y a une "magic string" (le nom de la section). Cette "magic string" est souvent gérée par un const string,
-                /// typiquement dans l'objet d'option lui même (cela reste une magic string néanmoins).
-                /// Dans le Device Model, la configuration des devices s'appelle "CK-DeviceModel", dès que l'on ajoute le package CK.DeviceModel.Configuration.
-                /// La section s'appelle "CK-DeviceModel" et pas autrement, et le développeur n'a pas à penser à ajouter ce "services.Configure(...)": pouf ça marche.
-                /// Et cela me parait sain.
-                ///
-                /// Je propose de reproduire ce mécanisme, sauf qu'étant déja dans AspNet, on a déjà Microsoft.Extension.Configuration et tout le toutim (on ne fait pas un package
-                /// ".Configuration" de plus).
-                /// En ce qui concerne la nom magique de la section, ma préférence va à "CK-WebFrontAuth", car même si aujourd'hui le package s'appelle CK.AspNet.Auth et que
-                /// le repo s'appelle "CK-AspNet-Auth", je pense qu'il faudrait le renommer en "CK.WebFrontAuth" (et CK-WebFrontAuth pour le repo un jour) .
-                /// 
                 .AddWebFrontAuth( options =>
                  {
                      options.ExpireTimeSpan = TimeSpan.FromDays( 1 );
                  } );
-
-            // Pour binder les options à la section "CK-WebFrontAuth", il est nécessaire de faire ça:
-            services.Configure<WebFrontAuthOptions>( _configuration.GetSection( "CK-WebFrontAuth" ) );
 
             services.AddCors();
         }

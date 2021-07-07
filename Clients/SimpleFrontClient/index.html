@@ -4,6 +4,13 @@
 </head>
 <body>
     <script id="script" src="bundle.js"></script>
+    <div class="endPoint">
+        <h4>EndPoint</h4>
+        <pre>hostName: </pre><input id="epHostName" value="localhost" />
+        <pre> port: </pre><input id="epPort" value="5001" type="number" min="1" max="65535" onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value" oninput="validity.valid || (value = this.previousValue)"/>
+        <pre> disableSsl: </pre><input type="checkbox" id="epDisableSsl" checked />
+        <button id="epApply" onclick="Sample.applyEndPoint()" disabled >Apply</button>
+    </div>
     <div class="main-container">
         <div class="function-container">
             <div class="function-item" style="display: flex; flex-direction: column;">
@@ -12,14 +19,12 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%;">
-                        Full: <input type="checkbox" id="fullRefresh">
-                        RequestSchemes: <input type="checkbox" id="requestSchemes">
-                        RequestVersion: <input type="checkbox" id="requestVersion">
+                        Full: <input type="checkbox" id="refreshFull">
+                        RequestSchemes: <input type="checkbox" id="refreshSchemes">
+                        RequestVersion: <input type="checkbox" id="refreshVersion">
                     </div>
                     <div style="display: flex; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.refresh(document.getElementById('fullRefresh').checked, 
-                                                        document.getElementById('requestSchemes').checked, 
-                                                        document.getElementById('requestVersion').checked)">send</button>
+                        <button id="refreshSend" onclick="Sample.refresh()">Send</button>
                     </div>
                 </div>
             </div>
@@ -30,18 +35,16 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Scheme: <input type="text", id="schemePopupLogin"> 
-                        Remember me <input type="checkbox" id="rememberMePopupLogin"> 
+                        Scheme: <input type="text", id="popupLoginSchemes"> 
+                        Remember me <input type="checkbox" id="popupLoginRememberMe"> 
                         <br>
                         UserData 
                         (JSON object): 
                         <br>
-                        <textarea id="userDataPopupLogin" id="" cols="30" rows="10"></textarea>
+                        <textarea id="popupLoginUserData" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div style="display: flex; height: min-content; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.startPopupLogin(document.getElementById('schemePopupLogin').value,
-                        document.getElementById('rememberMePopupLogin').checked,
-                        document.getElementById('userDataPopupLogin').value)">Send</button>
+                        <button id="popupLoginSend" onclick="Sample.startPopupLogin()">Send</button>
                     </div>
                 </div>
             </div>
@@ -52,21 +55,18 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Scheme: <input type="text" id="schemeInlineLogin"> 
-                        Remember me <input type="checkbox" id="rememberMeInlineLogin">
+                        Scheme: <input type="text" id="inlineLoginScheme"> 
+                        Remember me <input type="checkbox" id="inlineLoginRememberMe">
                         <br>
-                        ReturnUrl: <input type="text" id="returnUrlInlineLogin">
+                        ReturnUrl: <input type="text" id="inlineLoginReturnUrl">
                         <br>
                         UserData 
                         (JSON object):
                         <br>
-                        <textarea id="userDataInlineLogin" cols="30" rows="10"></textarea> 
+                        <textarea id="inlineLoginUserData" cols="30" rows="10"></textarea> 
                     </div>
                     <div style="display: flex; height: min-content; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.startInlineLogin(document.getElementById('schemeInlineLogin').value,
-                                                         document.getElementById('returnUrlInlineLogin').value,
-                                                         document.getElementById('rememberMeInlineLogin').checked,
-                                                         document.getElementById('userDataInlineLogin').value)">Send</button>
+                        <button id="inlineLoginSend" onclick="Sample.startInlineLogin()">Send</button>
                     </div>
                 </div>
             </div>
@@ -77,22 +77,19 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Username: <input type="text" id="usernameBasicLogin">
-                        Remember me <input type="checkbox" id="rememberMeBasicLogin">  
+                        Username: <input type="text" id="basicLoginUserName">
+                        Remember me <input type="checkbox" id="basicLoginRememberMe">  
                         <br>
-                        Password: <input type="text" id="passwordBasicLogin"> 
+                        Password: <input type="text" id="basicLoginPassword"> 
                         
                         <br>
                         UserData 
                         (JSON object): 
                         <br>
-                        <textarea id="userDataBasicLogin" cols="30" rows="10"></textarea>
+                        <textarea id="basicLoginUserData" cols="30" rows="10"></textarea>
                     </div>
                     <div style="display: flex; height: min-content; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.basicLogin(document.getElementById('usernameBasicLogin').value,
-                                                        document.getElementById('passwordBasicLogin').value,
-                                                        document.getElementById('rememberMeBasicLogin').checked,
-                                                        document.getElementById('userDataBasicLogin').value)">Send</button>
+                        <button id="basicLoginSend" onclick="Sample.basicLogin()">Send</button>
                     </div>
                 </div>
             </div>
@@ -102,11 +99,8 @@
                     <h4>Logout</h4>
                 </div>
                 <div style="display: flex; flex-direction: row;">
-                    <div style="width: 100%">
-                        Full: <input type="checkbox" id="fullLogout", value="true"> 
-                    </div>
                     <div style="display: flex; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.logout(document.getElementById('fullLogout').checked)">Send</button>
+                        <button id="logoutSend" onclick="Sample.logout()">Send</button>
                     </div>
                 </div>
                 
@@ -118,10 +112,10 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Username or Id: <input type="text" id="usernameImpersonate"> 
+                        Username or user Id: <input type="text" id="impersonateUsername"> 
                     </div>
                     <div style="display: flex; height: min-content; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.impersonate(document.getElementById('usernameImpersonate').value)">Send</button>
+                        <button id="impersonateSend" onclick="Sample.impersonate()">Send</button>
                     </div>
                 </div>
             </div>
@@ -132,24 +126,22 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Provider: <input type="text" id="providerUnsafeDirectLogin"> 
-                        Remember me <input type="checkbox" id="rememberMeUnsafeDirectLogin">
+                        Provider: <input type="text" id="unsafeDirectLoginProvider"> 
+                        Remember me <input type="checkbox" id="unsafeDirectLoginRememberMe">
                         <br>
                         Payload (JSON):
                         <br>
-                        <textarea id="payloadUnsafeDirectLogin" cols="30" rows="10"></textarea> 
+                        <textarea id="unsafeDirectLoginPayload" cols="30" rows="10"></textarea> 
                     </div>
                     <div style="display: flex; height: min-content; width: 100%; justify-content: flex-end;">
-                        <button onclick="Sample.unsafeDirectLogin(document.getElementById('providerUnsafeDirectLogin').value,
-                                                                                document.getElementById('payloadUnsafeDirectLogin').value,
-                                                                                document.getElementById('rememberMeUnsafeDirectLogin').checked)">Send</button>
+                        <button id="unsafeDirectLoginSend" onclick="Sample.unsafeDirectLogin()">Send</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="state-container">
-            <div class="state-item" id="state"><h2>State</h2></div>
-            <div class="state-item" id="endpoint"><h2>Endpoint</h2></div>
+        <div class="authServiceJson">
+            <h2 id="authServiceHeader">AuthService</h2>
+            <pre id="authServiceJson">Waiting for AuthService to be created...</pre>
         </div>
     </div>
 </body>

@@ -1,16 +1,30 @@
 # CK-Sample-UserOidc
-This project is a sample meant to be an example on how to implement the package CK.DB.User.UserOidc
-
+This project is a sample meant to be an exemple on how to implement the package CK.DB.User.UserOidc
 ## Installation
 Please install these before running the project :
 - Sql server (2017 or +)
 - Node
 - Npm
-
-
 ## Setup
 - Clone the repository
+- Create an [AAD oidc app](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/CreateApplicationBlade/quickStartType//isMSAApp/), to properly setup your app do the following steps :
+  - Set a redirect URI that match your C# client
+  - In the Authentication section :
+    - The tokens you would like to be issued by the authorization endpoint has to be ID tokens
+  - In the Cetifictes & secrets section :
+    - Create a new secret
+  - In token configuration section add those optinal claim :
+    - email
+    - family_name
+    - given_name
+    - preferred_username
+    - upn
+    - verified_primary_email
+  - In the API permissions section make sure you have those persmissions for the Microsoft Graph API :
+    - email
+    - openid
+    - profile
+    - User.Read
 - Build the solution
 - Start the C# project
 - Go to ../Clients/SimpleFrontClient the run the following commands to start the client ```npm i``` then ```npm start```
-  

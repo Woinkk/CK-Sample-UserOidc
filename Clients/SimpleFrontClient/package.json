@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@signature/webfrontauth": "12.2.2--0006-develop",
+    "@signature/webfrontauth": "12.2.2--0022-develop",
     "axios": "^0.21.1",
     "rxjs": "^6.4.0"
   },

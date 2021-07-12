@@ -5,10 +5,12 @@
 <body>
     <script id="script" src="bundle.js"></script>
     <div class="endPoint">
-        <h4>EndPoint</h4>
+        <h4 id="configName">Configuration (client version: )</h4>
         <pre>hostName: </pre><input id="epHostName" value="localhost" />
         <pre> port: </pre><input id="epPort" value="5001" type="number" min="1" max="65535" onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value" oninput="validity.valid || (value = this.previousValue)"/>
         <pre> disableSsl: </pre><input type="checkbox" id="epDisableSsl" checked />
+        <pre>Use Local Storage</pre><input type="checkbox" id="epUseLocalStorage" />
+        <pre>Check EndPoint Version</pre><input type="checkbox" id="epCheckEndPointVersion" checked />
         <button id="epApply" onclick="Sample.applyEndPoint()" disabled >Apply</button>
     </div>
     <div class="main-container">
@@ -41,7 +43,7 @@
                         UserData 
                         (JSON object): 
                         <br>
-                        <textarea id="popupLoginUserData" id="" cols="30" rows="10"></textarea>
+                        <textarea id="popupLoginUserData" cols="30" rows="10"></textarea>
                     </div>
                     <div style="display: flex; height: min-content; width: 100%; justify-content: flex-end;">
                         <button id="popupLoginSend" onclick="Sample.startPopupLogin()">Send</button>

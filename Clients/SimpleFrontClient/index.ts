@@ -215,5 +215,6 @@ export default {
   basicLogin,
   logout,
   impersonate,
+  unsafeDirectLogin,
   applyEndPoint
 };

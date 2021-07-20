@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CK.Sample.User.UserOidc.App\CK.Sample.User.UserOidc.App.csproj" />
+    <ProjectReference Include="..\UserOidc.App\UserOidc.App.csproj" />
     <ProjectReference Include="..\CKSetup\CKSetup.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
 

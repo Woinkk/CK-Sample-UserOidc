@@ -339,3 +339,4 @@ $StObjGen/
 /Clients/webfrontauth/.yarn/cache/
 /Clients/webfrontauth-ngx/.yarn/cache/
 /CKSetup/WorkingDir/
+appsettings.Development.json

@@ -5,8 +5,8 @@
   </Aspect>
 
   <BinPaths>
-    <BinPath Path="../CK.Sample.User.UserOidc.App/bin/Debug/netcoreapp3.1">
-      <ProjectPath>../CK.Sample.User.UserOidc.WebHost</ProjectPath>
+    <BinPath Path="../UserOidc.App/bin/Debug/netcoreapp3.1">
+      <ProjectPath>../UserOidc.WebHost</ProjectPath>
     </BinPath>
   </BinPaths>
 

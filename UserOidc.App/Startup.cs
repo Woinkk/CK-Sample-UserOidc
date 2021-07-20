@@ -1,7 +1,9 @@
 using System;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using CK.AspNet.Auth;
 using CK.Core;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 
@@ -137,7 +140,7 @@ namespace CK.Sample.User.UserOidc.App
 
                      // The OnTicketReceived is the main adapter between the remote provider and the
                      // backend: the information from the Ticket is transfered onto the payload that is the IUserOidc payload.
-                     o.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IAzureAdUserOidcInfo>( payload =>
+                     o.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IUserOidcInfo>( payload =>
                      {
                          payload.SchemeSuffix = "Signature";
                          payload.Sub = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;
@@ -146,6 +149,36 @@ namespace CK.Sample.User.UserOidc.App
                          payload.Email = c.Principal.FindFirst( "verified_primary_email" )?.Value;
                      } );
                  } )
+                .AddOpenIdConnect( "Oidc.Google", options =>
+                {
+                    string instance = _configuration["Authentication:Google:Instance"];
+                    string callbackPath = _configuration["Authentication:Google:CallbackPath"];
+                    string signedoutCallbackPath = _configuration["Authentication:Google:SignedOutCallbackPath"];
+
+                    options.ClientId = _configuration["Authentication:Google:ClientId"];
+                    options.ClientSecret = _configuration["Authentication:Google:ClientSecret"];
+                    options.Authority = instance;
+                    options.CallbackPath = new PathString( callbackPath );
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidIssuer = options.Authority,
+                    };
+                    options.Scope.Add( "email" );
+                    //options.Scope.Add( "https://www.googleapis.com/auth/user.phonenumbers.read" );
+
+                    options.SaveTokens = true;
+
+                    options.Events.OnRemoteFailure = f => f.WebFrontAuthRemoteFailureAsync();
+
+                    options.Events.OnTicketReceived = c =>c.WebFrontAuthRemoteAuthenticateAsync<IUserOidcInfo>( payload =>
+                    {
+                        payload.SchemeSuffix = "Google";
+                        payload.Sub = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;
+                        payload.DisplayName = c.Principal.FindFirst( "name" ).Value;
+                        payload.Username = c.Principal.FindFirst( "name" ).Value;
+                        payload.Email = c.Principal.FindFirst( ClaimTypes.Email ).Value;
+                    } );
+                } )
                 .AddWebFrontAuth( options =>
                  {
                      options.ExpireTimeSpan = TimeSpan.FromDays( 1 );
@@ -159,6 +192,7 @@ namespace CK.Sample.User.UserOidc.App
             if( _hostingEnvironment.IsDevelopment() )
             {
                 app.UseDeveloperExceptionPage();
+                IdentityModelEventSource.ShowPII = true;
             }
             app.UseGuardRequestMonitor();
 

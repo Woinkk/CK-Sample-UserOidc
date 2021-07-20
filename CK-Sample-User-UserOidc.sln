@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Sample.User.UserOidc.WebHost", "CK.Sample.User.UserOidc.WebHost\CK.Sample.User.UserOidc.WebHost.csproj", "{257EEAC4-1112-444A-B30C-D5D8A14DB8E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserOidc.WebHost", "UserOidc.WebHost\UserOidc.WebHost.csproj", "{257EEAC4-1112-444A-B30C-D5D8A14DB8E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Sample.User.UserOidc.App", "CK.Sample.User.UserOidc.App\CK.Sample.User.UserOidc.App.csproj", "{07213460-1A65-4541-AE9E-6239AD8C40B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserOidc.App", "UserOidc.App\UserOidc.App.csproj", "{07213460-1A65-4541-AE9E-6239AD8C40B5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CKSetup", "CKSetup\CKSetup.csproj", "{0096DFD6-E9B1-44EF-9B10-1DC20A47931D}"
 EndProject

@@ -126,11 +126,11 @@ let refreshFull: HTMLInputElement;
 let refreshSchemes: HTMLInputElement;
 let refreshVersion: HTMLInputElement;
 let refreshSend: HTMLButtonElement;
-let popupLoginSchemes: HTMLInputElement;
+let popupLoginSchemes: HTMLSelectElement;
 let popupLoginRememberMe: HTMLInputElement;
 let popupLoginUserData: HTMLTextAreaElement;
 let popupLoginSend: HTMLButtonElement;
-let inlineLoginScheme: HTMLInputElement;
+let inlineLoginScheme: HTMLSelectElement;
 let inlineLoginRememberMe: HTMLInputElement;
 let inlineLoginReturnUrl: HTMLInputElement;
 let inlineLoginUserData: HTMLTextAreaElement;
@@ -165,12 +165,12 @@ document.onreadystatechange = async () => {
   refreshVersion =  document.getElementById("refreshVersion") as HTMLInputElement;
   refreshSend =  document.getElementById("refreshSend") as HTMLButtonElement;
   
-  popupLoginSchemes = document.getElementById("popupLoginSchemes") as HTMLInputElement;
+  popupLoginSchemes = document.getElementById("popupLoginSchemes") as HTMLSelectElement;
   popupLoginRememberMe = document.getElementById("popupLoginRememberMe") as  HTMLInputElement;
   popupLoginUserData = document.getElementById("popupLoginUserData") as HTMLTextAreaElement;
   popupLoginSend = document.getElementById("popupLoginSend") as HTMLButtonElement;
 
-  inlineLoginScheme = document.getElementById("inlineLoginScheme") as HTMLInputElement;
+  inlineLoginScheme = document.getElementById("inlineLoginScheme") as HTMLSelectElement;
   inlineLoginRememberMe = document.getElementById("inlineLoginRememberMe") as HTMLInputElement;
   inlineLoginReturnUrl = document.getElementById("inlineLoginReturnUrl") as HTMLInputElement;
   inlineLoginUserData = document.getElementById("inlineLoginUserData") as HTMLTextAreaElement;
@@ -206,6 +206,14 @@ async function updateDisplay() {
     currentError: authService.currentError
   };
   authServiceJson.innerText = JSON.stringify( clean, undefined, 3 );
+  popupLoginSchemes.innerHTML = "";
+  inlineLoginScheme.innerHTML = "";
+  if (authService.availableSchemes.includes("Basic")) basicLoginSend.disabled = false;
+  else basicLoginSend.disabled = true;
+  authService.availableSchemes.forEach(scheme => {
+    popupLoginSchemes.options.add(new Option(scheme) as HTMLOptionElement);
+    inlineLoginScheme.options.add(new Option(scheme) as HTMLOptionElement);
+  });
 }
 
 export default {

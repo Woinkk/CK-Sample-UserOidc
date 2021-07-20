@@ -9,8 +9,8 @@
         <pre>hostName: </pre><input id="epHostName" value="localhost" />
         <pre> port: </pre><input id="epPort" value="5001" type="number" min="1" max="65535" onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value" oninput="validity.valid || (value = this.previousValue)"/>
         <pre> disableSsl: </pre><input type="checkbox" id="epDisableSsl" checked />
-        <pre>Use Local Storage</pre><input type="checkbox" id="epUseLocalStorage" />
-        <pre>Check EndPoint Version</pre><input type="checkbox" id="epCheckEndPointVersion" checked />
+        <pre>Use Local Storage: </pre><input type="checkbox" id="epUseLocalStorage" />
+        <pre>Check EndPoint Version: </pre><input type="checkbox" id="epCheckEndPointVersion" checked />
         <button id="epApply" onclick="Sample.applyEndPoint()" disabled >Apply</button>
     </div>
     <div class="main-container">
@@ -33,11 +33,23 @@
             <br>
             <div class="function-item">
                 <div>
+                    <h4>Logout</h4>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <div style="display: flex; width: 100%; justify-content: flex-end;">
+                        <button id="logoutSend" onclick="Sample.logout()">Send</button>
+                    </div>
+                </div>
+                
+            </div>
+            <br>
+            <div class="function-item">
+                <div>
                     <h4>StartPopupLogin</h4>
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Scheme: <input type="text", id="popupLoginSchemes"> 
+                        Scheme: <select id="popupLoginSchemes"></select>
                         Remember me <input type="checkbox" id="popupLoginRememberMe"> 
                         <br>
                         UserData 
@@ -57,7 +69,7 @@
                 </div>
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
-                        Scheme: <input type="text" id="inlineLoginScheme"> 
+                        Scheme: <select id="inlineLoginScheme"></select>
                         Remember me <input type="checkbox" id="inlineLoginRememberMe">
                         <br>
                         ReturnUrl: <input type="text" id="inlineLoginReturnUrl">
@@ -94,18 +106,6 @@
                         <button id="basicLoginSend" onclick="Sample.basicLogin()">Send</button>
                     </div>
                 </div>
-            </div>
-            <br>
-            <div class="function-item">
-                <div>
-                    <h4>Logout</h4>
-                </div>
-                <div style="display: flex; flex-direction: row;">
-                    <div style="display: flex; width: 100%; justify-content: flex-end;">
-                        <button id="logoutSend" onclick="Sample.logout()">Send</button>
-                    </div>
-                </div>
-                
             </div>
             <br>
             <div class="function-item">

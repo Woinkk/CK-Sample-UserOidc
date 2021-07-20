@@ -45,8 +45,7 @@ namespace CK.Sample.User.UserOidc.App.Auth
 
             if( context.InitialScheme == "Oidc.Signature" )
             {
-                IAzureAdUserOidcInfo userOidcInfo = (IAzureAdUserOidcInfo)context.Payload;
-
+                IUserOidcInfo userOidcInfo = (IUserOidcInfo)context.Payload;
                 // User does not exist :(
 
                 if( userOidcInfo.Username.EndsWith( "signature-code.com" ) )
@@ -73,7 +72,7 @@ namespace CK.Sample.User.UserOidc.App.Auth
                     return new UserLoginResult(
                         userInfo, 0, null, false
                     );
-                }
+                } 
                 else
                 {
                     result = new UserLoginResult(
@@ -83,6 +82,32 @@ namespace CK.Sample.User.UserOidc.App.Auth
                         false
                     );
                 }
+            }
+            else if( context.InitialScheme == "Oidc.Google" )
+            {
+                IUserOidcInfo userOidcInfo = (IUserOidcInfo)context.Payload;
+                // Create user
+                int userId = await _userTable.CreateUserAsync( ctx, 1, userOidcInfo.Username );
+
+                // Add the user to signature code group ( by design 4 is Signature Code group id )
+                await _groupTable.AddUserAsync( ctx, 1, 4, userId );
+
+                // Associate OpenID Sub
+                await _userOidcTable.CreateOrUpdateOidcUserAsync( ctx, 1, userId, userOidcInfo, UCLMode.CreateOnly );
+
+                // Associate e-mail from Username
+                await _actorEMailTable.AddEMailAsync( ctx, 1, userId,
+                    userOidcInfo.Email ?? userOidcInfo.Username,
+                    true, true );
+
+                // Read user
+                var userAuthInfo = await _authenticationDatabaseService.ReadUserAuthInfoAsync( ctx, 1, userId );
+                var userInfo = _authenticationTypeSystem.UserInfo.FromUserAuthInfo( userAuthInfo );
+
+                // Successful login
+                return new UserLoginResult(
+                    userInfo, 0, null, false
+                );
             }
             else
             {

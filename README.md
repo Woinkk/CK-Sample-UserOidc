@@ -28,3 +28,8 @@ Please install these before running the project :
 - Build the solution
 - Start the C# project
 - Go to ../Clients/SimpleFrontClient the run the following commands to start the client ```npm i``` then ```npm start```
+## WFA tester standalone
+In order to use only the WFA tester here is what you can do :
+- First you'll need to globally install the package http-server ```npm i -g http-server```
+- Then go in the WFA tester folder and build the project by doing ```npm run build```
+- Move to your new dist folder and make ```http-server . -p 9000```

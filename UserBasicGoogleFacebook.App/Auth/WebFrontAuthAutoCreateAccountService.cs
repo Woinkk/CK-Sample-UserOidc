@@ -56,12 +56,12 @@ namespace UserBasicGoogleFacebook.App.Auth
 
             if ( context.InitialScheme == "Basic" )
             {
-                IUserInfo userBasicInfo = (IUserInfo)context.Payload;
+                (string userName, string password) = (Tuple<string,string>)context.Payload;
 
                 // User does not exist
-                if( userBasicInfo.UserName.Equals( "Romain" ) )
+                if( userName.Equals( "Romain" ) )
                 {
-                    int userId = _userTable.FindByName( ctx, userBasicInfo.UserName );
+                    int userId = _userTable.FindByName( ctx, userName );
 
                     //Set the password when we try to login for the first time
                     _userPasswordTable.CreateOrUpdatePasswordUser( ctx, userId, userId, "password", UCLMode.CreateOnly );
@@ -80,7 +80,7 @@ namespace UserBasicGoogleFacebook.App.Auth
                     result = new UserLoginResult(
                         null, 1,
                         $"Local account was not found, and auto-create is disabled for scheme {context.InitialScheme} " +
-                        $" with Username {userBasicInfo.UserName}.",
+                        $" with Username {userName}.",
                         false
                     );
                 }

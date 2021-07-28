@@ -1,10 +1,12 @@
-# CK-Sample-UserOidc
-This project is a sample meant to be an exemple on how to implement the package CK.DB.User.UserOidc
+# CK-WebFrontAuth
+This project is a sample meant to be an exemple on how to implement the package CK.DB.User.UserOidc and other providers.
+
 ## Installation
 Please install these before running the project :
-- Sql server (2017 or +)
+- SQL Server (2017 or +)
 - Node
 - Npm
+
 ## Setup
 - Clone the repository
 - Create an [AAD oidc app](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/CreateApplicationBlade/quickStartType//isMSAApp/), to properly setup your app do the following steps :
@@ -28,8 +30,9 @@ Please install these before running the project :
 - Build the solution
 - Start the C# project
 - Go to ../Clients/SimpleFrontClient the run the following commands to start the client ```npm i``` then ```npm start```
-## WFA tester standalone
-In order to use only the WFA tester here is what you can do :
-- First you'll need to globally install the package http-server ```npm i -g http-server```
-- Then go in the WFA tester folder and build the project by doing ```npm run build```
+
+## WFA tester standalone use
+In order to only use the WFA tester here is what you can do :
+- First you'll need to globally install the package [http-server](https://www.npmjs.com/package/http-server) ```npm i -g http-server```
+- Then go in the WFATester folder and build the project by doing ```npm run build```
 - Move to your new dist folder and make ```http-server . -p 9000```

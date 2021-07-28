@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UserOidc.App\UserOidc.App.csproj" />
-    <ProjectReference Include="..\CKSetup\CKSetup.UserOidc.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\UserBasicGoogleFacebook.App\UserBasicGoogleFacebook.App.csproj" />
+    <ProjectReference Include="..\CKSetup\CKSetup.UserBasicGoogleFacebook.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>

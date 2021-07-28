@@ -60,6 +60,7 @@ h4 {
   outline-width: 2px;
   flex-grow: 1;
   padding: 5px;
+  overflow: auto;
 }
 .authServiceJson>h2 {
   text-align: center;

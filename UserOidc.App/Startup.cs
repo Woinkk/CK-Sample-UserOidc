@@ -86,23 +86,19 @@ namespace CK.Sample.User.UserOidc.App
 
         public void ConfigureServices( IServiceCollection services )
         {
-
             // The entry point assembly contains the generated code.
             services.AddCKDatabase( _startupMonitor, System.Reflection.Assembly.GetEntryAssembly() );
-
-            // Pourquoi a-t-on besoin de MVC dans ce sample ?
-            services.AddControllers();
 
             //Configured cookie policy due to correlation fail when trying to authenticate with oidc (review that)
             // Que veut dire ce "(review that)" ?
             services.Configure<CookiePolicyOptions>( options =>
-             {
+            {
                  options.MinimumSameSitePolicy = SameSiteMode.Unspecified;
                  options.OnAppendCookie = cookieContext =>
                      CheckSameSite( cookieContext.Context, cookieContext.CookieOptions );
                  options.OnDeleteCookie = cookieContext =>
                      CheckSameSite( cookieContext.Context, cookieContext.CookieOptions );
-             } );
+            } );
 
             // By specifying the defaultScheme here, the https://github.com/Invenietis/CK-AspNet-Auth/blob/master/CK.AspNet.Auth/WebFrontAuthHandler.cs#L490-L502
             // HandleAuthenticateAsync() method is called: the Request.User ClaimsPrincipal is built based on the IAuthenticationInfo.
@@ -170,7 +166,7 @@ namespace CK.Sample.User.UserOidc.App
 
                     options.Events.OnRemoteFailure = f => f.WebFrontAuthRemoteFailureAsync();
 
-                    options.Events.OnTicketReceived = c =>c.WebFrontAuthRemoteAuthenticateAsync<IUserOidcInfo>( payload =>
+                    options.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IUserOidcInfo>( payload =>
                     {
                         payload.SchemeSuffix = "Google";
                         payload.Sub = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;

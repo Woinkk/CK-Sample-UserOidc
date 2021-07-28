@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:64938",
-      "sslPort": 44398
+      "applicationUrl": "http://localhost:7323",
+      "sslPort": 44309
     }
   },
   "profiles": {
@@ -15,11 +15,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "UserOidc.WebHost": {
+    "UserBasicGoogleFacebook.WebHost": {
       "commandName": "Project",
       "launchBrowser": false,
-      "applicationUrl": "http://localhost:5001",
-      "launchUrl": "index.html",
+      "applicationUrl": "http://localhost:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

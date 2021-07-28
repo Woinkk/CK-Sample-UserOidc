@@ -340,3 +340,4 @@ $StObjGen/
 /Clients/webfrontauth-ngx/.yarn/cache/
 /CKSetup/WorkingDir/
 appsettings.Development.json
+/CKSetup.UserBasicGoogleFacebook/WorkingDir/

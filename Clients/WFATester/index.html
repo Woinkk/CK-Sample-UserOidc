@@ -6,11 +6,11 @@
     <script id="script" src="bundle.js"></script>
     <div class="endPoint">
         <h4 id="configName">Configuration (client version: )</h4>
-        <pre>hostName: </pre><input id="epHostName" value="localhost" />
-        <pre> port: </pre><input id="epPort" value="5001" type="number" min="1" max="65535" onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value" oninput="validity.valid || (value = this.previousValue)"/>
-        <pre> disableSsl: </pre><input type="checkbox" id="epDisableSsl" checked />
-        <pre>Use Local Storage: </pre><input type="checkbox" id="epUseLocalStorage" />
-        <pre>Check EndPoint Version: </pre><input type="checkbox" id="epCheckEndPointVersion" checked />
+        <pre>hostName: <input id="epHostName" value="localhost" /></pre>
+        <pre> port: <input id="epPort" value="5001" type="number" min="1" max="65535" onfocus="this.previousValue = this.value" onkeydown="this.previousValue = this.value" oninput="validity.valid || (value = this.previousValue)"/></pre>
+        <pre> disableSsl: <input type="checkbox" id="epDisableSsl" checked /></pre>
+        <pre>Use Local Storage: <input type="checkbox" id="epUseLocalStorage" /></pre>
+        <pre>Skip EndPoint Version Check: <input type="checkbox" id="epCheckEndPointVersion" /></pre>
         <button id="epApply" onclick="Sample.applyEndPoint()" disabled >Apply</button>
     </div>
     <div class="main-container">
@@ -50,6 +50,7 @@
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
                         Scheme: <select id="popupLoginSchemes"></select>
+                        <br>
                         Remember me <input type="checkbox" id="popupLoginRememberMe"> 
                         <br>
                         UserData 
@@ -70,9 +71,10 @@
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
                         Scheme: <select id="inlineLoginScheme"></select>
-                        Remember me <input type="checkbox" id="inlineLoginRememberMe">
                         <br>
                         ReturnUrl: <input type="text" id="inlineLoginReturnUrl">
+                        <br>
+                        Remember me <input type="checkbox" id="inlineLoginRememberMe">
                         <br>
                         UserData 
                         (JSON object):
@@ -92,10 +94,10 @@
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
                         Username: <input type="text" id="basicLoginUserName">
-                        Remember me <input type="checkbox" id="basicLoginRememberMe">  
                         <br>
                         Password: <input type="text" id="basicLoginPassword"> 
-                        
+                        <br>
+                        Remember me <input type="checkbox" id="basicLoginRememberMe"> 
                         <br>
                         UserData 
                         (JSON object): 
@@ -129,6 +131,7 @@
                 <div style="display: flex; flex-direction: row;">
                     <div style="width: 100%">
                         Provider: <input type="text" id="unsafeDirectLoginProvider"> 
+                        <br>
                         Remember me <input type="checkbox" id="unsafeDirectLoginRememberMe">
                         <br>
                         Payload (JSON):

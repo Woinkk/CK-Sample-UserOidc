@@ -341,3 +341,4 @@ $StObjGen/
 /CKSetup/WorkingDir/
 appsettings.Development.json
 /CKSetup.UserBasicGoogleFacebook/WorkingDir/
+/UserBasicGoogleFacebook.WebHost/SystemPassword.txt

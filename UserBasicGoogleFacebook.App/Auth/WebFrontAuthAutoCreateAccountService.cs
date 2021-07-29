@@ -54,44 +54,12 @@ namespace UserBasicGoogleFacebook.App.Auth
 
             ISqlCallContext ctx = context.HttpContext.RequestServices.GetRequiredService<ISqlCallContext>();
 
-            if ( context.InitialScheme == "Basic" )
-            {
-                (string userName, string password) = (Tuple<string,string>)context.Payload;
-
-                // User does not exist
-                if( userName.Equals( "Romain" ) )
-                {
-                    int userId = _userTable.FindByName( ctx, userName );
-
-                    //Set the password when we try to login for the first time
-                    _userPasswordTable.CreateOrUpdatePasswordUser( ctx, userId, userId, "password", UCLMode.CreateOnly );
-
-                    // Read user
-                    var userAuthInfo = await _authenticationDatabaseService.ReadUserAuthInfoAsync( ctx, 1, userId );
-                    var userInfo = _authenticationTypeSystem.UserInfo.FromUserAuthInfo( userAuthInfo );
-
-                    // Successful login
-                    return new UserLoginResult(
-                        userInfo, 0, null, false
-                    );
-                }
-                else
-                {
-                    result = new UserLoginResult(
-                        null, 1,
-                        $"Local account was not found, and auto-create is disabled for scheme {context.InitialScheme} " +
-                        $" with Username {userName}.",
-                        false
-                    );
-                }
-            } else if ( context.InitialScheme == "Google" )
+            if ( context.InitialScheme == "Google" )
             {
                 IUserGoogleInfo userGoogleInfo = (IUserGoogleInfo)context.Payload;
-                // Create user
-                int userId = await _userTable.CreateUserAsync( ctx, 1, userGoogleInfo.UserName );
 
-                // Add the user to signature code group ( by design 4 is Signature Code group id )
-                await _groupTable.AddUserAsync( ctx, 1, 4, userId );
+                // Create user
+                int userId = await FindUniqueUsernameAsync( ctx, userGoogleInfo.UserName );
 
                 // Associate GoogleAccountId
                 await _userGoogleTable.CreateOrUpdateGoogleUserAsync( ctx, 1, userId, userGoogleInfo, UCLMode.CreateOnly );
@@ -112,11 +80,9 @@ namespace UserBasicGoogleFacebook.App.Auth
             } else if ( context.InitialScheme == "Facebook" )
             {
                 Model.IUserFacebookInfo userFacebookInfo = (Model.IUserFacebookInfo)context.Payload;
-                // Create user
-                int userId = await _userTable.CreateUserAsync( ctx, 1, userFacebookInfo.UserName );
 
-                // Add the user to signature code group ( by design 4 is Signature Code group id )
-                await _groupTable.AddUserAsync( ctx, 1, 4, userId );
+                // Create user
+                int userId = await FindUniqueUsernameAsync( ctx, userFacebookInfo.UserName );
 
                 // Associate FacebookAccountId
                 await _userFacebookTable.CreateOrUpdateFacebookUserAsync( ctx, 1, userId, userFacebookInfo, UCLMode.CreateOnly );
@@ -145,6 +111,22 @@ namespace UserBasicGoogleFacebook.App.Auth
             }
 
             return result;
+        }
+        public async Task<int> FindUniqueUsernameAsync( ISqlCallContext ctx, string username )
+        {
+            int count = 1;
+
+            //Try to create an user
+            int userId = await _userTable.CreateUserAsync( ctx, 1, username );
+
+            //If an user with the same username already exists, we try to find an unique one by adding a number at the end
+            while( userId == -1 )
+            {
+                username = $"{username}({count})";
+                userId = await _userTable.CreateUserAsync( ctx, 1, username );
+                count++;
+            }
+            return userId;
         }
     }
 }

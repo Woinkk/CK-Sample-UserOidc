@@ -8,6 +8,7 @@ using CK.SqlServer;
 using CK.DB.Actor.ActorEMail;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
+using System;
 
 namespace CK.Sample.User.UserOidc.App.Auth
 {
@@ -46,7 +47,6 @@ namespace CK.Sample.User.UserOidc.App.Auth
             if( context.InitialScheme == "Oidc.Signature" )
             {
                 IUserOidcInfo userOidcInfo = (IUserOidcInfo)context.Payload;
-                // User does not exist :(
 
                 if( userOidcInfo.Username.EndsWith( "signature-code.com" ) )
                 {

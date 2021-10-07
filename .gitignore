@@ -336,17 +336,16 @@ jspm_packages/
 CodeCakeBuilder/MemoryKey.*.txt
 CodeCakeBuilder/UnitTestsDone.*.txt
 $StObjGen/
-/Clients/webfrontauth/.yarn/cache/
-/Clients/webfrontauth-ngx/.yarn/cache/
+#/Clients/WFATester/.yarn/cache/
 /CKSetup/WorkingDir/
 appsettings.Development.json
 /CKSetup.UserBasicGoogleFacebook/WorkingDir/
 /UserBasicGoogleFacebook.WebHost/SystemPassword.txt
 
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+/Clients/WFATester/.pnp.*
+/Clients/WFATester/.yarn/*
+/Clients/WFATester/!.yarn/patches
+/Clients/WFATester/!.yarn/plugins
+/Clients/WFATester/!.yarn/releases
+/Clients/WFATester/!.yarn/sdks
+/Clients/WFATester/!.yarn/versions

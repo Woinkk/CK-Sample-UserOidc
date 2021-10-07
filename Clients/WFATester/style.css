@@ -10,6 +10,8 @@
   padding-right: 5%;
 }
 .function-item {
+  display: flex; 
+  flex-direction: column;
   outline: auto;
   outline-style: solid;
   outline-color: black;
@@ -52,6 +54,58 @@ h4 {
 .endPoint>h4 {
   display: inline;
   margin-right: 1em;
+}
+.userStatus {
+  outline: auto;
+  outline-style: solid;
+  outline-color: black;
+  outline-width: 2px;
+  display: flex;
+  flex-grow: 0.5;
+  flex-direction: row;
+  padding: 5px;
+}
+.userStatus>pre {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
+.shrink{
+  visibility: hidden;
+  }
+.shrinkTitle {
+  display: flex;
+}
+.shrinkButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-bottom: 5px;
+  transform: rotateZ(90deg);
+}
+.contentShrink {
+  display: flex;
+  flex-direction: column;
+}
+.sendButton {
+  display: flex; 
+  width: 100%; 
+  justify-content: flex-end;
+}
+.functionInput {
+  width: 100%
+}
+.functionInput>input {
+  margin-top: 5px;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+}
+.authLevel {
+  padding-left: 4px;
+  padding-right: 4px;
+  color: white;
 }
 .authServiceJson {
   outline: auto;

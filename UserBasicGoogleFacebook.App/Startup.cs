@@ -120,7 +120,7 @@ namespace UserBasicGoogleFacebook.App
                     o.Events.OnCreatingTicket = c =>
                     {
                         //c.Properties.Parameters["picture"] = (string)c.User["picture"];
-                        //c.Properties.Parameters["verified_email"] = (string)c.User["verified_email"];
+                        c.Properties.Parameters["verified_email"] = c.User.GetProperty( "verified_email" ).ToString();
                         return Task.CompletedTask;
                     };
 

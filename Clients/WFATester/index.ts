@@ -113,6 +113,18 @@ async function unsafeDirectLogin() {
   stopActivity();
 }
 
+function shrink(className: string, buttonClassName: string) {
+  let shrinkingContent = document.getElementById(className);
+  let button = document.getElementById(buttonClassName);
+  if (shrinkingContent.style.display != "none") {
+    shrinkingContent.style.display = "none";
+    button.style.transform = "rotateZ(-90deg)";
+  } else {
+    shrinkingContent.style.display = "flex";
+    button.style.transform = "rotateZ(90deg)";
+  }
+}
+
 let authServiceHeader: HTMLElement;
 let authServiceJson: HTMLElement;
 let configName: HTMLElement;
@@ -122,6 +134,9 @@ let epDisableSsl: HTMLInputElement;
 let epUseLocalStorage: HTMLInputElement;
 let epCheckEndPointVersion: HTMLInputElement;
 let epApply: HTMLButtonElement;
+let userAuthLevel: HTMLElement;
+let userId: HTMLElement;
+let userActualUser: HTMLElement;
 let refreshFull: HTMLInputElement;
 let refreshSchemes: HTMLInputElement;
 let refreshVersion: HTMLInputElement;
@@ -159,6 +174,10 @@ document.onreadystatechange = async () => {
   epUseLocalStorage = document.getElementById("epUseLocalStorage") as HTMLInputElement;
   epCheckEndPointVersion = document.getElementById("epCheckEndPointVersion") as HTMLInputElement;
   epApply = document.getElementById("epApply") as HTMLButtonElement;
+
+  userAuthLevel = document.getElementById("userAuthLevel") as HTMLElement;
+  userId = document.getElementById("userId") as HTMLElement;
+  userActualUser = document.getElementById("userActualUser") as HTMLElement;
 
   refreshFull =  document.getElementById("refreshFull") as HTMLInputElement;
   refreshSchemes =  document.getElementById("refreshSchemes") as HTMLInputElement;
@@ -214,6 +233,36 @@ async function updateDisplay() {
     popupLoginSchemes.options.add(new Option(scheme) as HTMLOptionElement);
     inlineLoginScheme.options.add(new Option(scheme) as HTMLOptionElement);
   });
+
+  let authLevelText;
+  switch (authService.authenticationInfo.level) {
+    case 0:
+      authLevelText = "None";
+      userAuthLevel.style.backgroundColor = "#000";
+      break;
+    case 1:
+      authLevelText = "Unsafe";
+      userAuthLevel.style.backgroundColor = "red";
+      break;
+    case 2:
+      authLevelText = "Normal";
+      userAuthLevel.style.backgroundColor = "green";
+      break;
+    case 3:
+      authLevelText = "Critical";
+      userAuthLevel.style.backgroundColor =  "blue";
+      break;
+    default:
+      authLevelText = "None";
+      userAuthLevel.style.backgroundColor = "#000";
+  }
+
+  userAuthLevel.innerHTML = authLevelText;
+  userId.innerText = authService.authenticationInfo.user.userName+" (Id: "+authService.authenticationInfo.user.userId.toString()+")";
+  userActualUser.innerText = authService.authenticationInfo.actualUser.userName+" (Id: "+authService.authenticationInfo.actualUser.userId.toString()+")";
+  if(!authService.authenticationInfo.isImpersonated) {
+    userActualUser.parentElement.remove();
+  }
 }
 
 export default {
@@ -224,5 +273,6 @@ export default {
   logout,
   impersonate,
   unsafeDirectLogin,
-  applyEndPoint
+  applyEndPoint,
+  shrink
 };

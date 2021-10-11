@@ -29,10 +29,10 @@ Please install these before running the project :
     - User.Read
 - Build the solution
 - Start the C# project
-- Go to ../Clients/SimpleFrontClient the run the following commands to start the client ```npm i``` then ```npm start```
+- Go to ../Clients/WFATester the run the following commands to start the client ```yarn install``` then ```yarn start```
 
 ## WFA tester standalone use
 In order to only use the WFA tester here is what you can do :
 - First you'll need to globally install the package [http-server](https://www.npmjs.com/package/http-server) ```npm i -g http-server```
-- Then go in the WFATester folder and build the project by doing ```npm run build```
+- Then go in the WFATester folder and build the project by doing ```yarn run build```
 - Move to your new dist folder and make ```http-server . -p 9000```

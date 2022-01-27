@@ -13,7 +13,7 @@ namespace UserBasicGoogleFacebook.App
 {
     public class DatabaseInitializer : IRealObject
     {
-        async Task OnHostStartedAsync( ISqlCallContext ctx, UserTable user, UserPasswordTable password )
+        async Task OnHostStartAsync( ISqlCallContext ctx, UserTable user, UserPasswordTable password )
         {
             await CreateSimpleUserAsync( ctx, user, password, "Spencer", "pwd" );
             await CreateSimpleUserAsync( ctx, user, password, "Clémence", "pwd" );

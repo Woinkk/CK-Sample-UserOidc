@@ -6,7 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="$StObjGen/G0.cs" />
+  </ItemGroup>
+  <Target Name="InjectStObjGen" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <Compile Include="$StObjGen/G0.cs" />
+    </ItemGroup>
+  </Target>
+  
+  <ItemGroup>
     <ProjectReference Include="..\UserBasicGoogleFacebook.App\UserBasicGoogleFacebook.App.csproj" />
+    <ProjectReference Include="..\CKSetup\CKSetup.csproj" ReferenceOutputAssembly="false" Private="false"/>
   </ItemGroup>
 
 </Project>

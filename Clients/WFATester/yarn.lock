@@ -2324,6 +2324,18 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"genversion@npm:^3.0.1":
+  version: 3.0.2
+  resolution: "genversion@npm:3.0.2"
+  dependencies:
+    commander: ^7.2.0
+    find-package: ^1.0.0
+  bin:
+    genversion: bin/genversion.js
+  checksum: 1ee1c703ea7ba3b5fd572a69c3fd43e1781fef62ab7cc2096ce1bdc08d0aa656489c1edf696c3ca0e13ed3af411d34d6267c69df91bc3044260d2d24f508fbd4
+  languageName: node
+  linkType: hard
+
 "get-caller-file@npm:^1.0.1":
   version: 1.0.3
   resolution: "get-caller-file@npm:1.0.3"
@@ -6125,6 +6137,7 @@ typescript@^3.5.3:
     "@types/node": ^15.12.3
     axios: ^0.21.1
     css-loader: ^5.2.6
+    genversion: ^3.0.1
     html-webpack-plugin: ^4.5.2
     rxjs: ^6.4.0
     style-loader: ^2.0.0

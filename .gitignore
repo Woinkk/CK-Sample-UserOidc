@@ -349,3 +349,4 @@ appsettings.Development.json
 /Clients/WFATester/!.yarn/releases
 /Clients/WFATester/!.yarn/sdks
 /Clients/WFATester/!.yarn/versions
+/Clients/WFATester/WFATester.version.ts

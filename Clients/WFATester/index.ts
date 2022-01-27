@@ -1,5 +1,6 @@
 import { AuthService, IUserInfo } from '@signature/webfrontauth';
 import axios from 'axios';
+import { version } from './WFATester.version';
 
 //Initialize a new auth service
 let identityEndPoint = {
@@ -53,14 +54,12 @@ async function applyEndPoint() {
   stopActivity();
   updateDisplay();
   
-  configName.innerHTML = "Configuration (client version: " + AuthService.clientVersion + ")"
+  configName.innerHTML = "Configuration (WFA client version: " + AuthService.clientVersion + ", WFATester version: "+version+")"
   epApply.disabled = false;
   refreshSend.disabled = false;
   popupLoginSend.disabled = false;
   logoutSend.disabled = false;
 }
-
-
 
 async function refresh() {
   startActivity();

@@ -1,11 +1,11 @@
 {
-  "name": "wfa-tester",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@signature/wfa-tester",
+  "version": "0.0.0-0",
+  "description": "Test app for WebFrontAuth backend.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "genversion --es6 --semi WFATester.version.ts && webpack"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/node": "^15.12.3",
     "css-loader": "^5.2.6",
+    "genversion": "^3.0.1",
     "html-webpack-plugin": "^4.5.2",
     "style-loader": "^2.0.0",
     "ts-loader": "5.3.1",

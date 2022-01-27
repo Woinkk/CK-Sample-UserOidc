@@ -7,11 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UserOidc.App\UserOidc.App.csproj" />
-    <ProjectReference Include="..\CKSetup\CKSetup.UserOidc.csproj" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="%24StObjGen\" />
+    <ProjectReference Include="..\CKSetup\CKSetup.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

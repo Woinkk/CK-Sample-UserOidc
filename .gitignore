@@ -350,3 +350,5 @@ appsettings.Development.json
 /Clients/WFATester/!.yarn/sdks
 /Clients/WFATester/!.yarn/versions
 /Clients/WFATester/WFATester.version.ts
+/UserBasicGoogleFacebook/CKSetup/WorkingDir/
+/UserOidc/CKSetup/WorkingDir/

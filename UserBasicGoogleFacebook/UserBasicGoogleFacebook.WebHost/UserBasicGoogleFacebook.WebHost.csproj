@@ -7,11 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UserBasicGoogleFacebook.App\UserBasicGoogleFacebook.App.csproj" />
-    <ProjectReference Include="..\CKSetup\CKSetup.UserBasicGoogleFacebook.csproj" ReferenceOutputAssembly="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="%24StObjGen\" />
   </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@ namespace CK.Sample.User.UserOidc.WebHost
         public static void Main(string[] args)
         {
             Host.CreateDefaultBuilder(args)
-                 .UseMonitoring()
+                 .UseCKMonitoring()
                  .ConfigureWebHostDefaults(webBuilder =>
                  {
                      webBuilder

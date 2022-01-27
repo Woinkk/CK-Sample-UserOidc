@@ -136,7 +136,7 @@ namespace CK.Sample.User.UserOidc.App
 
                      // The OnTicketReceived is the main adapter between the remote provider and the
                      // backend: the information from the Ticket is transfered onto the payload that is the IUserOidc payload.
-                     o.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IUserOidcInfo>( payload =>
+                     o.Events.OnTicketReceived = c => c.WebFrontAuthOnTicketReceivedAsync<IUserOidcInfo>( payload =>
                      {
                          payload.SchemeSuffix = "Signature";
                          payload.Sub = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;
@@ -164,9 +164,9 @@ namespace CK.Sample.User.UserOidc.App
 
                     options.SaveTokens = true;
 
-                    options.Events.OnRemoteFailure = f => f.WebFrontAuthRemoteFailureAsync();
+                    options.Events.OnRemoteFailure = f => f.WebFrontAuthOnRemoteFailureAsync();
 
-                    options.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IUserOidcInfo>( payload =>
+                    options.Events.OnTicketReceived = c => c.WebFrontAuthOnTicketReceivedAsync<IUserOidcInfo>( payload =>
                     {
                         payload.SchemeSuffix = "Google";
                         payload.Sub = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;

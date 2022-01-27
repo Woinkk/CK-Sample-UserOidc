@@ -70,7 +70,7 @@ async function refresh() {
 
 async function startPopupLogin() {
   startActivity();
-  await authService.startPopupLogin( popupLoginSchemes.value, popupLoginRememberMe.checked, !!popupLoginUserData.value
+  await authService.startPopupLogin( popupLoginSchemes.value, popupLoginRememberMe.checked, popupLoginImpersonateAsCurrentUser.checked, !!popupLoginUserData.value
     ? JSON.parse( popupLoginUserData.value )
     : undefined );
   stopActivity();
@@ -78,7 +78,7 @@ async function startPopupLogin() {
 
 async function startInlineLogin() {
   startActivity();
-  await authService.startInlineLogin( inlineLoginScheme.value, inlineLoginReturnUrl.value ,inlineLoginRememberMe.checked, !!inlineLoginUserData.value
+  await authService.startInlineLogin( inlineLoginScheme.value, inlineLoginReturnUrl.value ,inlineLoginRememberMe.checked, inlineLoginImpersonateAsCurrentUser.checked, !!inlineLoginUserData.value
     ? JSON.parse( inlineLoginUserData.value )
     : undefined );
   stopActivity();
@@ -86,7 +86,7 @@ async function startInlineLogin() {
 
 async function basicLogin() {
   startActivity();
-  await authService.basicLogin( basicLoginUserName.value, basicLoginPassword.value, basicLoginRememberMe.checked, !!basicLoginUserData.value 
+  await authService.basicLogin( basicLoginUserName.value, basicLoginPassword.value, basicLoginRememberMe.checked, basicLoginImpersonateAsCurrentUser.checked, !!basicLoginUserData.value 
     ? JSON.parse( basicLoginUserData.value )
     : undefined );
   stopActivity();
@@ -109,7 +109,7 @@ async function unsafeDirectLogin() {
   await authService.unsafeDirectLogin( unsafeDirectLoginProvider.value, !!unsafeDirectLoginPayload.value 
     ? JSON.parse( unsafeDirectLoginPayload.value )
     : undefined, 
-    unsafeDirectLoginRememberMe.checked );
+    unsafeDirectLoginRememberMe.checked, unsafeDirectLoginImpersonateAsCurrentUser.checked );
   stopActivity();
 }
 
@@ -143,15 +143,18 @@ let refreshVersion: HTMLInputElement;
 let refreshSend: HTMLButtonElement;
 let popupLoginSchemes: HTMLSelectElement;
 let popupLoginRememberMe: HTMLInputElement;
+let popupLoginImpersonateAsCurrentUser: HTMLInputElement;
 let popupLoginUserData: HTMLTextAreaElement;
 let popupLoginSend: HTMLButtonElement;
 let inlineLoginScheme: HTMLSelectElement;
 let inlineLoginRememberMe: HTMLInputElement;
+let inlineLoginImpersonateAsCurrentUser: HTMLInputElement;
 let inlineLoginReturnUrl: HTMLInputElement;
 let inlineLoginUserData: HTMLTextAreaElement;
 let inlineLoginSend: HTMLButtonElement;
 let basicLoginUserName: HTMLInputElement;
 let basicLoginRememberMe: HTMLInputElement;
+let basicLoginImpersonateAsCurrentUser: HTMLInputElement;
 let basicLoginPassword: HTMLInputElement;
 let basicLoginUserData: HTMLTextAreaElement;
 let basicLoginSend: HTMLButtonElement;
@@ -159,6 +162,7 @@ let impersonateUsername: HTMLInputElement;
 let impersonateSend: HTMLButtonElement;
 let unsafeDirectLoginProvider: HTMLInputElement;
 let unsafeDirectLoginRememberMe: HTMLInputElement;
+let unsafeDirectLoginImpersonateAsCurrentUser: HTMLInputElement;
 let unsafeDirectLoginPayload: HTMLTextAreaElement;
 let unsafeDirectLoginSend: HTMLButtonElement;
 let logoutSend: HTMLButtonElement;
@@ -186,17 +190,20 @@ document.onreadystatechange = async () => {
   
   popupLoginSchemes = document.getElementById("popupLoginSchemes") as HTMLSelectElement;
   popupLoginRememberMe = document.getElementById("popupLoginRememberMe") as  HTMLInputElement;
+  popupLoginImpersonateAsCurrentUser = document.getElementById("popupLoginImpersonateAsCurrentUser") as HTMLInputElement;
   popupLoginUserData = document.getElementById("popupLoginUserData") as HTMLTextAreaElement;
   popupLoginSend = document.getElementById("popupLoginSend") as HTMLButtonElement;
 
   inlineLoginScheme = document.getElementById("inlineLoginScheme") as HTMLSelectElement;
   inlineLoginRememberMe = document.getElementById("inlineLoginRememberMe") as HTMLInputElement;
+  inlineLoginImpersonateAsCurrentUser = document.getElementById("inlineLoginImpersonateAsCurrentUser") as HTMLInputElement;
   inlineLoginReturnUrl = document.getElementById("inlineLoginReturnUrl") as HTMLInputElement;
   inlineLoginUserData = document.getElementById("inlineLoginUserData") as HTMLTextAreaElement;
   inlineLoginSend = document.getElementById("inlineLoginSend") as HTMLButtonElement;
 
   basicLoginUserName = document.getElementById("basicLoginUserName") as HTMLInputElement;
   basicLoginRememberMe = document.getElementById("basicLoginRememberMe") as HTMLInputElement;
+  basicLoginImpersonateAsCurrentUser = document.getElementById("basicLoginImpersonateAsCurrentUser") as HTMLInputElement;
   basicLoginPassword = document.getElementById("basicLoginPassword") as HTMLInputElement;
   basicLoginUserData = document.getElementById("basicLoginUserData") as HTMLTextAreaElement;
   basicLoginSend = document.getElementById("basicLoginSend") as HTMLButtonElement;
@@ -206,6 +213,7 @@ document.onreadystatechange = async () => {
 
   unsafeDirectLoginProvider = document.getElementById("unsafeDirectLoginProvider") as HTMLInputElement;
   unsafeDirectLoginRememberMe = document.getElementById("unsafeDirectLoginRememberMe") as HTMLInputElement;
+  unsafeDirectLoginImpersonateAsCurrentUser = document.getElementById("unsafeDirectLoginImpersonateAsCurrentUser") as HTMLInputElement;
   unsafeDirectLoginPayload = document.getElementById("unsafeDirectLoginPayload") as HTMLTextAreaElement;
   unsafeDirectLoginSend = document.getElementById("unsafeDirectLoginSend") as HTMLButtonElement;
 

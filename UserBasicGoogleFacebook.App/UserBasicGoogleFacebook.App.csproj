@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
@@ -14,16 +14,16 @@
   
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="CK.DB.AspNet.Auth" Version="12.2.2--0022-develop" />
-    <PackageReference Include="CK.DB.User.UserFacebook" Version="0.9.0" />
-    <PackageReference Include="CK.DB.User.UserOidc" Version="11.1.1--0002-develop" />
-    <PackageReference Include="CK.DB.User.UserGoogle" Version="11.1.0" />
-    <PackageReference Include="CK.DB.User.UserGoogle.EMailColumns" Version="11.1.0" />
-    <PackageReference Include="CK.DB.User.UserPassword" Version="11.1.0" />
-    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="11.1.0" />
-    <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="3.1.0" />
-    <PackageReference Include="CK.DB.Zone" Version="11.1.0" />
-    <PackageReference Include="CK.DB.Zone.SimpleNaming" Version="11.1.0" />
+    <PackageReference Include="CK.DB.AspNet.Auth" Version="16.0.0-r07-01-0001-develop" />
+    <PackageReference Include="CK.DB.User.UserFacebook" Version="0.12.0-r07-01" />
+    <PackageReference Include="CK.DB.User.UserOidc" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.User.UserGoogle" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.User.UserGoogle.EMailColumns" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.User.UserPassword" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="6.0.0-r07-01" />
+    <PackageReference Include="CK.DB.Zone" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.Zone.SimpleNaming" Version="14.0.0-r07-01" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="3.1.17" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.17" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.16" />

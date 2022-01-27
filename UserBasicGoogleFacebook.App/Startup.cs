@@ -111,7 +111,7 @@ namespace UserBasicGoogleFacebook.App
                     o.Scope.Add( "profile" );
                     o.Scope.Add( "email" );
 
-                    o.Events.OnRemoteFailure = f => f.WebFrontAuthRemoteFailureAsync();
+                    o.Events.OnRemoteFailure = f => f.WebFrontAuthOnRemoteFailureAsync();
 
                     // Google package filters the original claims to standard ones, but "email_verified" and "pictures" are lost.
                     // This is why here, we intercept the early ticket creation and save the fields in the AuthenticationProperties.Parameters.
@@ -125,14 +125,15 @@ namespace UserBasicGoogleFacebook.App
                     };
 
 
-                    o.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<IUserGoogleInfo>( payload =>
+                    o.Events.OnTicketReceived = c => c.WebFrontAuthOnTicketReceivedAsync<IUserGoogleInfo>( payload =>
                     {
                         payload.GoogleAccountId = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;
                         payload.EMail = c.Principal.FindFirst( ClaimTypes.Email ).Value;
                         payload.FirstName = c.Principal.FindFirst( ClaimTypes.GivenName )?.Value;
                         payload.LastName = c.Principal.FindFirst( ClaimTypes.Surname )?.Value;
                         payload.UserName = c.Principal.FindFirst( ClaimTypes.Name )?.Value;
-                        payload.EMailVerified = (string)c.Properties.Parameters.GetValueWithDefault( "verified_email", null ) == "True";
+                        object? value;
+                        payload.EMailVerified = (string)c.Properties.Parameters.TryGetValue( "verified_email", out value ).ToString() == "True";
 
                     } );
                 } )
@@ -141,9 +142,9 @@ namespace UserBasicGoogleFacebook.App
                     o.AppId = _configuration["Authentication:Facebook:ClientId"];
                     o.AppSecret = _configuration["Authentication:Facebook:ClientSecret"];
 
-                    o.Events.OnRemoteFailure = f => f.WebFrontAuthRemoteFailureAsync();
+                    o.Events.OnRemoteFailure = f => f.WebFrontAuthOnRemoteFailureAsync();
 
-                    o.Events.OnTicketReceived = c => c.WebFrontAuthRemoteAuthenticateAsync<Model.IUserFacebookInfo>( payload =>
+                    o.Events.OnTicketReceived = c => c.WebFrontAuthOnTicketReceivedAsync<Model.IUserFacebookInfo>( payload =>
                     {
                         payload.FacebookAccountId = c.Principal.FindFirst( ClaimTypes.NameIdentifier ).Value;
                         payload.UserName = c.Principal.FindFirst( ClaimTypes.Name )?.Value;

@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <IsPackable>false</IsPackable>
     <!-- On travaille TOUJOURS en "nullable reference type" (NRT) maintenant! -->
@@ -10,10 +10,10 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="CK.DB.AspNet.Auth" Version="12.2.2--0022-develop" />
-    <PackageReference Include="CK.DB.User.UserOidc" Version="11.1.1--0002-develop" />
-    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="11.1.0" />
-    <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="3.1.0" />
+    <PackageReference Include="CK.DB.AspNet.Auth" Version="16.0.0-r07-01-0001-develop" />
+    <PackageReference Include="CK.DB.User.UserOidc" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="14.0.0-r07-01" />
+    <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="6.0.0-r07-01" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.16" />
   </ItemGroup>
 

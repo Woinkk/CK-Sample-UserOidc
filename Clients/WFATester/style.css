@@ -6,6 +6,9 @@
   padding: 1em;
 }
 .function-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   width: 70%;
   padding-right: 5%;
 }
@@ -108,6 +111,9 @@ h4 {
   color: white;
 }
 .authServiceJson {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   outline: auto;
   outline-style: solid;
   outline-color: black;

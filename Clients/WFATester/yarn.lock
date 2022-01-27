@@ -32,12 +32,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@signature/webfrontauth@npm:13.0.2--0008-develop":
-  version: 13.0.2--0008-develop
-  resolution: "@signature/webfrontauth@npm:13.0.2--0008-develop"
+"@signature/webfrontauth@npm:16.0.0-r07-01-0001-develop":
+  version: 16.0.0-r07-01-0001-develop
+  resolution: "@signature/webfrontauth@npm:16.0.0-r07-01-0001-develop"
   dependencies:
     axios: 0.21.1
-  checksum: 212f04adeb88e3e0c14be9cef417a48059dce95886688f489df485f6b5f626509e872d845b65dccd282fa88e9f6f50d3a5a12fdbb8e4f98b45a7f313e517924d
+  checksum: fb2256488b8af27cc84ac27c20e993ccc86c1f2e6870a19b21c32b24b7c13fba3f61488f9196249855aca2d5e52614a956e263cd6e5726d57089e2d98054a81a
   languageName: node
   linkType: hard
 
@@ -6121,7 +6121,7 @@ typescript@^3.5.3:
   version: 0.0.0-use.local
   resolution: "wfa-tester@workspace:."
   dependencies:
-    "@signature/webfrontauth": 13.0.2--0008-develop
+    "@signature/webfrontauth": 16.0.0-r07-01-0001-develop
     "@types/node": ^15.12.3
     axios: ^0.21.1
     css-loader: ^5.2.6

@@ -11,7 +11,7 @@ namespace UserBasicGoogleFacebook.WebHost
         public static void Main( string[] args )
         {
             Host.CreateDefaultBuilder( args )
-                 .UseMonitoring()
+                 .UseCKMonitoring()
                  .ConfigureWebHostDefaults( webBuilder =>
                  {
                      webBuilder

@@ -1,12 +1,12 @@
 <Setup Engine="CK.Setup.StObjEngine, CK.StObj.Engine">
   <Aspect Type="CK.Setup.SetupableAspectConfiguration, CK.Setupable.Model" Version="1" />
   <Aspect Type="CK.Setup.SqlSetupAspectConfiguration, CK.SqlServer.Setup.Model">
-    <DefaultDatabaseConnectionString>Server=.;Database=SampleUserOidc;Integrated Security=True</DefaultDatabaseConnectionString>
+    <DefaultDatabaseConnectionString>Server=.;Database=SampleUserBasicGoogleFacebook;Integrated Security=True</DefaultDatabaseConnectionString>
   </Aspect>
 
   <BinPaths>
-    <BinPath Path="../UserOidc.App/bin/Debug/netcoreapp3.1">
-      <ProjectPath>../UserOidc.WebHost</ProjectPath>
+    <BinPath Path="../UserBasicGoogleFacebook.App/bin/Debug/netcoreapp3.1">
+      <ProjectPath>../UserBasicGoogleFacebook.WebHost</ProjectPath>
     </BinPath>
   </BinPaths>
 

@@ -41,6 +41,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@signature/wfa-tester@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@signature/wfa-tester@workspace:."
+  dependencies:
+    "@signature/webfrontauth": 16.0.0-r07-01-0001-develop
+    "@types/node": ^15.12.3
+    axios: ^0.21.1
+    css-loader: ^5.2.6
+    genversion: ^3.0.1
+    html-webpack-plugin: ^4.5.2
+    rxjs: ^6.4.0
+    style-loader: ^2.0.0
+    ts-loader: 5.3.1
+    typescript: ^3.5.3
+    webpack: 4.27.1
+    webpack-cli: 3.1.2
+    webpack-dev-server: 3.1.10
+  languageName: unknown
+  linkType: soft
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -1184,6 +1204,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "commander@npm:7.2.0"
+  checksum: 53501cbeee61d5157546c0bef0fedb6cdfc763a882136284bed9a07225f09a14b82d2a84e7637edfd1a679fb35ed9502fd58ef1d091e6287f60d790147f68ddc
+  languageName: node
+  linkType: hard
+
 "commondir@npm:^1.0.1":
   version: 1.0.1
   resolution: "commondir@npm:1.0.1"
@@ -2163,6 +2190,15 @@ __metadata:
     make-dir: ^2.0.0
     pkg-dir: ^3.0.0
   checksum: 60ad475a6da9f257df4e81900f78986ab367d4f65d33cf802c5b91e969c28a8762f098693d7a571b6e4dd4c15166c2da32ae2d18b6766a18e2071079448fdce4
+  languageName: node
+  linkType: hard
+
+"find-package@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "find-package@npm:1.0.0"
+  dependencies:
+    parents: ^1.0.1
+  checksum: 48840557446ffbd5d461080be9d55ee0858a493678b9fdf03512ce0f69b20572a990d2b9489f50f762164e6021fe9421d92b9d578779bf343af775a69185fc95
   languageName: node
   linkType: hard
 
@@ -4286,6 +4322,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"parents@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "parents@npm:1.0.1"
+  dependencies:
+    path-platform: ~0.11.15
+  checksum: 094fc817d5e8d94e9f9d38c2618a2822f2960b7a268183a36326c5d1cf6ff32f97b1158b0f9b32ab126573996dfe6db104feda6d26e8531d762d178ef4488fc8
+  languageName: node
+  linkType: hard
+
 "parse-asn1@npm:^5.0.0, parse-asn1@npm:^5.1.5":
   version: 5.1.6
   resolution: "parse-asn1@npm:5.1.6"
@@ -4362,6 +4407,13 @@ fsevents@~2.3.2:
   version: 2.0.1
   resolution: "path-key@npm:2.0.1"
   checksum: f7ab0ad42fe3fb8c7f11d0c4f849871e28fbd8e1add65c370e422512fc5887097b9cf34d09c1747d45c942a8c1e26468d6356e2df3f740bf177ab8ca7301ebfd
+  languageName: node
+  linkType: hard
+
+"path-platform@npm:~0.11.15":
+  version: 0.11.15
+  resolution: "path-platform@npm:0.11.15"
+  checksum: 239f2eae720531ff5a48837de68f94ebd7cf6cd2bf295b39beb97c5bafc34a34a683b62f9f5ad5ca5e78d71d7d44c29e7c56373c1c8473ab128a4e648bb898f0
   languageName: node
   linkType: hard
 
@@ -6128,26 +6180,6 @@ typescript@^3.5.3:
   checksum: 5976835e68a86afcd64c7a9762ed85f2f27d48c488c707e67ba85e717b90fa066b98ab33c744d64255c9622d349eedecf728e65a5f921da71b58d0e9591b9038
   languageName: node
   linkType: hard
-
-"wfa-tester@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "wfa-tester@workspace:."
-  dependencies:
-    "@signature/webfrontauth": 16.0.0-r07-01-0001-develop
-    "@types/node": ^15.12.3
-    axios: ^0.21.1
-    css-loader: ^5.2.6
-    genversion: ^3.0.1
-    html-webpack-plugin: ^4.5.2
-    rxjs: ^6.4.0
-    style-loader: ^2.0.0
-    ts-loader: 5.3.1
-    typescript: ^3.5.3
-    webpack: 4.27.1
-    webpack-cli: 3.1.2
-    webpack-dev-server: 3.1.10
-  languageName: unknown
-  linkType: soft
 
 "which-boxed-primitive@npm:^1.0.2":
   version: 1.0.2

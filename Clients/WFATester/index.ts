@@ -54,7 +54,7 @@ async function applyEndPoint() {
   stopActivity();
   updateDisplay();
   
-  configName.innerHTML = "Configuration (WFA client version: " + AuthService.clientVersion + ", WFATester version: "+version+")"
+  configName.innerHTML = "Configuration <br/>WFA client version: " + AuthService.clientVersion + "<br/>WFATester version: "+version;
   epApply.disabled = false;
   refreshSend.disabled = false;
   popupLoginSend.disabled = false;

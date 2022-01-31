@@ -326,29 +326,22 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
-
-/Clients/webfrontauth/spec/
-/Clients/webfrontauth/src
-/Clients/webfrontauth/index.d.ts
-/Clients/webfrontauth/index.js
-/Clients/webfrontauth/index.js.map
+$StObjGen/
 
 CodeCakeBuilder/MemoryKey.*.txt
 CodeCakeBuilder/UnitTestsDone.*.txt
-$StObjGen/
-#/Clients/WFATester/.yarn/cache/
-/CKSetup/WorkingDir/
-appsettings.Development.json
-/CKSetup.UserBasicGoogleFacebook/WorkingDir/
-/UserBasicGoogleFacebook.WebHost/SystemPassword.txt
 
-/Clients/WFATester/.pnp.*
-/Clients/WFATester/.yarn/*
-/Clients/WFATester/!.yarn/patches
-/Clients/WFATester/!.yarn/plugins
-/Clients/WFATester/!.yarn/releases
-/Clients/WFATester/!.yarn/sdks
-/Clients/WFATester/!.yarn/versions
-/Clients/WFATester/WFATester.version.ts
+appsettings.Development.json
+
+/WFATester/.yarn/cache/
+/WFATester/.pnp.*
+/WFATester/.yarn/*
+!/WFATester/.yarn/patches
+!/WFATester/.yarn/plugins
+!/WFATester/.yarn/releases
+!/WFATester/.yarn/sdks
+!/WFATester/.yarn/versions
+
+/WFATester/WFATester.version.ts
 /UserBasicGoogleFacebook/CKSetup/WorkingDir/
 /UserOidc/CKSetup/WorkingDir/

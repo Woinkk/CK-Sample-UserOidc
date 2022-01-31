@@ -244,7 +244,7 @@ async function updateDisplay() {
     refreshable: authService.refreshable,
     rememberMe: authService.rememberMe,
     token: authService.token,
-    currentError: authService.currentError
+    lastResult: authService.lastResult
   };
   authServiceJson.innerText = JSON.stringify( clean, undefined, 3 );
   popupLoginSchemes.innerHTML = "";

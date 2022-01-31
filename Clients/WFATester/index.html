@@ -174,18 +174,14 @@
                 <div>
                     <h4 class="shrinkTitle">
                         Impersonate
-                        <button 
-                        id="impersonateButtonShrink"
-                        class="shrinkButton"
-                        onclick="Sample.shrink('impersonateShrink', 'impersonateButtonShrink')"
-                        >
+                        <button id="impersonateButtonShrink" class="shrinkButton" onclick="Sample.shrink('impersonateShrink', 'impersonateButtonShrink')">
                             >
                         </button>
                     </h4>
                 </div>
                 <div class="contentShrink" id="impersonateShrink">
                     <div class="functionInput">
-                        Username or user Id: <input type="text" id="impersonateUsername">
+                        <input type="radio" name="impersonateBy" id="impersonateByUserName">UserName</input> or <input type="radio" name="impersonateBy" id="impersonateByUserId" checked>UserId</input>: <input type="text" id="impersonateUserIdOrName">
                     </div>
                     <div class="sendButton">
                         <button id="impersonateSend" onclick="Sample.impersonate()">Send</button>

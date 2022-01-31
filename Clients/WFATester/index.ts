@@ -69,25 +69,30 @@ async function refresh() {
 
 async function startPopupLogin() {
   startActivity();
-  await authService.startPopupLogin( popupLoginSchemes.value, popupLoginRememberMe.checked, popupLoginImpersonateAsCurrentUser.checked, !!popupLoginUserData.value
-    ? JSON.parse( popupLoginUserData.value )
-    : undefined );
+  await authService.startPopupLogin( popupLoginSchemes.value, 
+                                     popupLoginRememberMe.checked, 
+                                     popupLoginImpersonateAsCurrentUser.checked, 
+                                     !!popupLoginUserData.value ? JSON.parse( popupLoginUserData.value ) : undefined );
   stopActivity();
 } 
 
 async function startInlineLogin() {
   startActivity();
-  await authService.startInlineLogin( inlineLoginScheme.value, inlineLoginReturnUrl.value ,inlineLoginRememberMe.checked, inlineLoginImpersonateAsCurrentUser.checked, !!inlineLoginUserData.value
-    ? JSON.parse( inlineLoginUserData.value )
-    : undefined );
+  await authService.startInlineLogin( inlineLoginScheme.value, 
+                                      inlineLoginReturnUrl.value,
+                                      inlineLoginRememberMe.checked, 
+                                      inlineLoginImpersonateAsCurrentUser.checked,
+                                      !!inlineLoginUserData.value ? JSON.parse( inlineLoginUserData.value ) : undefined );
   stopActivity();
 }
 
 async function basicLogin() {
   startActivity();
-  await authService.basicLogin( basicLoginUserName.value, basicLoginPassword.value, basicLoginRememberMe.checked, basicLoginImpersonateAsCurrentUser.checked, !!basicLoginUserData.value 
-    ? JSON.parse( basicLoginUserData.value )
-    : undefined );
+  await authService.basicLogin( basicLoginUserName.value,
+                                basicLoginPassword.value, 
+                                basicLoginRememberMe.checked, 
+                                basicLoginImpersonateAsCurrentUser.checked, 
+                                !!basicLoginUserData.value ? JSON.parse( basicLoginUserData.value ) : undefined );
   stopActivity();
 }
 
@@ -99,16 +104,24 @@ async function logout() {
 
 async function impersonate() {
   startActivity();
-  await authService.impersonate( impersonateUsername.value );
+  if(impersonateByUserId.checked){
+    const id = parseInt( impersonateUserIdOrName.value );
+    if(isNaN(id)) alert('UserId must be an integer.');
+    else await authService.impersonate( id );
+  }
+  else {
+    const n = impersonateUserIdOrName.value;
+    await authService.impersonate( impersonateUserIdOrName.value );
+  }
   stopActivity();
 } 
 
 async function unsafeDirectLogin() {
   startActivity();
-  await authService.unsafeDirectLogin( unsafeDirectLoginProvider.value, !!unsafeDirectLoginPayload.value 
-    ? JSON.parse( unsafeDirectLoginPayload.value )
-    : undefined, 
-    unsafeDirectLoginRememberMe.checked, unsafeDirectLoginImpersonateAsCurrentUser.checked );
+  await authService.unsafeDirectLogin( unsafeDirectLoginProvider.value, 
+                                       !!unsafeDirectLoginPayload.value ? JSON.parse( unsafeDirectLoginPayload.value ) : undefined, 
+                                       unsafeDirectLoginRememberMe.checked, 
+                                       unsafeDirectLoginImpersonateAsCurrentUser.checked );
   stopActivity();
 }
 
@@ -157,8 +170,9 @@ let basicLoginImpersonateAsCurrentUser: HTMLInputElement;
 let basicLoginPassword: HTMLInputElement;
 let basicLoginUserData: HTMLTextAreaElement;
 let basicLoginSend: HTMLButtonElement;
-let impersonateUsername: HTMLInputElement;
+let impersonateUserIdOrName: HTMLInputElement;
 let impersonateSend: HTMLButtonElement;
+let impersonateByUserId: HTMLInputElement;
 let unsafeDirectLoginProvider: HTMLInputElement;
 let unsafeDirectLoginRememberMe: HTMLInputElement;
 let unsafeDirectLoginImpersonateAsCurrentUser: HTMLInputElement;
@@ -207,7 +221,8 @@ document.onreadystatechange = async () => {
   basicLoginUserData = document.getElementById("basicLoginUserData") as HTMLTextAreaElement;
   basicLoginSend = document.getElementById("basicLoginSend") as HTMLButtonElement;
 
-  impersonateUsername = document.getElementById("impersonateUsername") as HTMLInputElement;
+  impersonateUserIdOrName = document.getElementById("impersonateUserIdOrName") as HTMLInputElement;
+  impersonateByUserId = document.getElementById("impersonateByUserId") as HTMLInputElement;
   impersonateSend = document.getElementById("impersonateSend") as HTMLButtonElement;
 
   unsafeDirectLoginProvider = document.getElementById("unsafeDirectLoginProvider") as HTMLInputElement;

@@ -55,7 +55,8 @@ h4 {
   padding: 5px;
 }
 .endPoint>h4 {
-  display: inline;
+  display: flex;
+  flex-direction: column;
   margin-right: 1em;
 }
 .userStatus {

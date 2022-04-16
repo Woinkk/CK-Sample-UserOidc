@@ -11,7 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="CK.DB.AspNet.Auth" Version="16.0.0-r08-00-0019-develop" />
+    <PackageReference Include="CK.DB.AspNet.Auth" Version="16.0.0-r08-00-0020-develop" />
     <PackageReference Include="CK.DB.User.UserFacebook" Version="0.12.0-r07-02-0017-develop" />
     <PackageReference Include="CK.DB.User.UserOidc" Version="14.0.0-r07-02-0017-develop" />
     <PackageReference Include="CK.DB.User.UserGoogle" Version="14.0.0-r07-02-0017-develop" />

@@ -326,15 +326,22 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
-
-/Clients/webfrontauth/spec/
-/Clients/webfrontauth/src
-/Clients/webfrontauth/index.d.ts
-/Clients/webfrontauth/index.js
-/Clients/webfrontauth/index.js.map
+$StObjGen/
 
 CodeCakeBuilder/MemoryKey.*.txt
 CodeCakeBuilder/UnitTestsDone.*.txt
-$StObjGen/
-/Clients/webfrontauth/.yarn/cache/
-/Clients/webfrontauth-ngx/.yarn/cache/
+
+appsettings.Development.json
+
+/WFATester/.yarn/cache/
+/WFATester/.pnp.*
+/WFATester/.yarn/*
+!/WFATester/.yarn/patches
+!/WFATester/.yarn/plugins
+!/WFATester/.yarn/releases
+!/WFATester/.yarn/sdks
+!/WFATester/.yarn/versions
+
+/WFATester/WFATester.version.ts
+/UserBasicGoogleFacebook/CKSetup/WorkingDir/
+/UserOidc/CKSetup/WorkingDir/

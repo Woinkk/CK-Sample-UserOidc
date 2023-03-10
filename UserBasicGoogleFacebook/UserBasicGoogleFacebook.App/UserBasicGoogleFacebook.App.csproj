@@ -11,12 +11,12 @@
   </ItemGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="CK.DB.AspNet.Auth" Version="20.0.1--0002-develop" />
+    <PackageReference Include="CK.DB.AspNet.Auth" Version="20.0.1--0003-develop" />
     <PackageReference Include="CK.DB.User.UserFacebook" Version="5.0.1--0002-develop" />
     <PackageReference Include="CK.DB.User.UserOidc" Version="18.0.1--0002-develop" />
     <PackageReference Include="CK.DB.User.UserGoogle" Version="18.0.1--0002-develop" />
     <PackageReference Include="CK.DB.User.UserGoogle.EMailColumns" Version="18.0.1--0002-develop" />
-    <PackageReference Include="CK.DB.User.UserPassword" Version="18.0.1--0002-develop" />
+    <PackageReference Include="CK.DB.User.UserPassword" Version="18.0.2--0001-develop" />
     <PackageReference Include="CK.DB.Actor.ActorEMail" Version="18.0.1--0002-develop" />
     <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="10.0.1--0002-develop" />
     <PackageReference Include="CK.DB.Zone" Version="18.0.1--0002-develop" />

@@ -17,7 +17,7 @@
     <PackageReference Include="CK.DB.User.UserGoogle" Version="18.0.1--0030-develop" />
     <PackageReference Include="CK.DB.User.UserGoogle.EMailColumns" Version="18.0.1--0030-develop" />
     <PackageReference Include="CK.DB.User.UserPassword" Version="18.0.2--0028-develop" />
-    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="18.0.1--0029-develop" />
+    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="18.0.1--0030-develop" />
     <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="10.0.1--0030-develop" />
     <PackageReference Include="CK.DB.Zone" Version="18.0.1--0030-develop" />
     <PackageReference Include="CK.DB.Zone.SimpleNaming" Version="18.0.1--0030-develop" />

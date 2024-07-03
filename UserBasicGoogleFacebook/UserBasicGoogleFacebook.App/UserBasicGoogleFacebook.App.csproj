@@ -3,7 +3,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <IsPackable>false</IsPackable>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="**\*.sql" />
@@ -11,16 +10,16 @@
   </ItemGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="CK.DB.AspNet.Auth" Version="22.0.0" />
-    <PackageReference Include="CK.DB.User.UserFacebook" Version="7.0.0" />
-    <PackageReference Include="CK.DB.User.UserOidc" Version="20.0.0" />
-    <PackageReference Include="CK.DB.User.UserGoogle" Version="20.0.0" />
-    <PackageReference Include="CK.DB.User.UserGoogle.EMailColumns" Version="20.0.0" />
-    <PackageReference Include="CK.DB.User.UserPassword" Version="20.0.0" />
-    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="20.0.0" />
-    <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="12.0.0" />
-    <PackageReference Include="CK.DB.Zone" Version="20.0.0" />
-    <PackageReference Include="CK.DB.Zone.SimpleNaming" Version="20.0.0" />
+    <PackageReference Include="CK.DB.AspNet.Auth" Version="23.0.0" />
+    <PackageReference Include="CK.DB.User.UserFacebook" Version="8.0.0" />
+    <PackageReference Include="CK.DB.User.UserOidc" Version="21.0.0" />
+    <PackageReference Include="CK.DB.User.UserGoogle" Version="21.0.0" />
+    <PackageReference Include="CK.DB.User.UserGoogle.EMailColumns" Version="21.0.0" />
+    <PackageReference Include="CK.DB.User.UserPassword" Version="21.0.0" />
+    <PackageReference Include="CK.DB.Actor.ActorEMail" Version="21.0.0" />
+    <PackageReference Include="CK.DB.Actor.ActorPhoneNumber" Version="13.0.0" />
+    <PackageReference Include="CK.DB.Zone" Version="21.0.0" />
+    <PackageReference Include="CK.DB.Zone.SimpleNaming" Version="21.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.7" />

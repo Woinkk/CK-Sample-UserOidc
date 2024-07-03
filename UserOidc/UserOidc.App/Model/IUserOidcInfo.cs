@@ -8,6 +8,6 @@ namespace CK.Sample.User.UserOidc.App
         string Username { get; set; }
         string DisplayName { get; set; }
         string? Email { get; set; }
-        IReadOnlyList<string>? Phones { get; set; }
+        IList<string> Phones { get; }
     }
 }
